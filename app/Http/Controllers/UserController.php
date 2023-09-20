@@ -14,9 +14,6 @@ class UserController extends Controller
    public function index()
    {
       $users = User::all();
-      // foreach ($users as $user) {
-      //    $user->password = decrypt($user->password);
-      // };
       return ['data_user' => UserResource::collection($users)];
    }
 
@@ -57,12 +54,20 @@ class UserController extends Controller
    /**
     * Update the specified resource in storage.
     */
-   public function update(Request $request, string $id)
-   {
-      $user = User::findOrFail($id);
-      $user->update($request->all());
-      return ['data_user' => new UserResource($user)];
-   }
+    public function update(Request $request, string $id)
+    {
+        $user = User::findOrFail($id);
+    
+        // Enkripsi password baru
+        $input = $request->all();
+        if (isset($input['password'])) {
+            $input['password'] = bcrypt($input['password']);
+        }
+    
+        $user->update($input);
+    
+        return ['data_user' => new UserResource($user)];
+    }
 
    /**
     * Remove the specified resource from storage.
