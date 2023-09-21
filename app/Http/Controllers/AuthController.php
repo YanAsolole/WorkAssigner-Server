@@ -33,7 +33,7 @@ class AuthController extends Controller
 
       $success['token'] = $user->createToken('auth_token')->plainTextToken;
       $success['name'] = $user->name;
-        
+
       return response()->json([
          'success' => true,
          'message' => 'Register sukses',
@@ -68,5 +68,30 @@ class AuthController extends Controller
             'data' => null
          ]);
       }
+   }
+
+   public function logout(Request $request)
+   {
+      // $validator = Validator::make($request->all(), [
+      //    'token' => 'required',
+      // ]);
+
+      // if ($validator->fails()) {
+      //    return response()->json([
+      //       'success' => false,
+      //       'message' => 'Ada kesalahan', 
+      //       'data' => $validator->errors()
+      //    ]);
+      // }
+
+      $user = $request->all();
+
+      if ($user) {
+         $user['token']->delete();
+      }
+      return response()->json([
+         'success' => true,
+         'message' => 'Logout sukses'
+      ]);
    }
 }
