@@ -17,6 +17,8 @@ return new class extends Migration
             $table->integer('id_user');
             $table->string('nama_tugas');
             $table->text('deskripsi');
+            $table->enum('prioritas', [1,2,3]);
+            $table->boolean('status');
             $table->date('tgl_mulai');
             $table->date('tgl_selesai');
             $table->timestamps();
