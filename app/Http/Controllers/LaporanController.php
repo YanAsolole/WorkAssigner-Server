@@ -13,8 +13,23 @@ class LaporanController extends Controller
      */
     public function index()
     {
-      $laporan = Laporan::all();
-      return ['data_laporan' => LaporanResource::collection($laporan)]; 
+        $laporan = Laporan::all();
+        $laporanTransformed = $laporan->map(function($item) {
+            return [
+                'id' => $item->id,
+                'nama_tugas' => $item->tugas->nama_tugas,
+                'name' => $item->user->name,
+                'nama_laporan' => $item->nama_laporan,
+                'deskripsi' => $item->deskripsi,
+                'keluhan' => $item->keluhan,
+                'progres' => $item->progres,
+                'tgl_laporan' => $item->tgl_laporan,
+                'created_at' => $item->created_at,
+                'updated_at' => $item->updated_at,
+            ];
+        });
+    
+        return ['data_laporan' => $laporanTransformed];
     }
 
     /**

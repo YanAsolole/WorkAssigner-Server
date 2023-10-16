@@ -14,7 +14,23 @@ class TugasController extends Controller
     public function index()
     {
       $tugas = Tugas::all();
-      return ['data_tugas' => TugasResource::collection($tugas)]; 
+      $tugasTransformed = $tugas->map(function($item) {
+          return [
+              'id' => $item->id,
+              'nama_project' => $item->project->nama_project,
+              'name' => $item->user->name,
+              'nama_tugas' => $item->nama_tugas,
+              'deskripsi' => $item->deskripsi,
+              'prioritas' => $item->prioritas,
+              'status' => $item->status,
+              'tgl_mulai' => $item->tgl_mulai,
+              'tgl_selesai' => $item->tgl_selesai,
+              'created_at' => $item->created_at,
+              'updated_at' => $item->updated_at,
+          ];
+      });
+  
+      return ['data_tugas' => $tugasTransformed];
     }
 
     /**
