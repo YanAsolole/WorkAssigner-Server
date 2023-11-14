@@ -4,9 +4,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\TugasController;
+use App\Http\Controllers\PekerjaanController;
 use App\Http\Controllers\LaporanController;
-use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ProyekController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,9 +30,9 @@ Route::middleware('auth:sanctum')->group(function () {
    
    Route::resource('users', UserController::class);
    
-   Route::resource('projects', ProjectController::class);
+   Route::resource('proyeks', ProyekController::class);
    
-   Route::resource('tugas', TugasController::class);
+   Route::resource('pekerjaans', PekerjaanController::class);
    
    Route::resource('laporans', LaporanController::class);
 });

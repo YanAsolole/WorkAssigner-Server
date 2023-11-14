@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Project extends Model
+class Proyek extends Model
 {
-    use HasFactory;
+   use HasFactory;
 
-    protected $table = "projects";
-    protected $guarded = ['id']; 
+   protected $table = "proyeks";
+   protected $guarded = ['id'];
 }

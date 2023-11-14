@@ -17,19 +17,19 @@ class UsersTableSeeder extends Seeder
          'name' => 'Fadli Ismail',
          'username' => 'fadli',
          'password' => bcrypt('123'),
-         'role' => 'user'
+         'role' => 'karyawan'
       ]);
       DB::table('users')->insert([
          'name' => 'Yusril Nanditama',
          'username' => 'yusril',
          'password' => bcrypt('123'),
-         'role' => 'user'
+         'role' => 'karyawan'
       ]);
       DB::table('users')->insert([
          'name' => 'Alfian Dwi Anggoro',
          'username' => 'alfian',
          'password' => bcrypt('123'),
-         'role' => 'user'
+         'role' => 'karyawan'
       ]);
       DB::table('users')->insert([
          'name' => 'Admin',
