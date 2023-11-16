@@ -9,6 +9,7 @@ use App\Http\Resources\LaporanResource;
 
 class LaporanController extends Controller
 {
+<<<<<<< HEAD
    /**
     * Display a listing of the resource.
     */
@@ -17,6 +18,31 @@ class LaporanController extends Controller
       $laporan = Laporan::all();
       return ['data_laporan' => LaporanResource::collection($laporan)];
    }
+=======
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        $laporan = Laporan::all();
+        $laporanTransformed = $laporan->map(function($item) {
+            return [
+                'id' => $item->id,
+                'nama_tugas' => $item->tugas->nama_tugas,
+                'name' => $item->user->name,
+                'nama_laporan' => $item->nama_laporan,
+                'deskripsi' => $item->deskripsi,
+                'keluhan' => $item->keluhan,
+                'progres' => $item->progres,
+                'tgl_laporan' => $item->tgl_laporan,
+                'created_at' => $item->created_at,
+                'updated_at' => $item->updated_at,
+            ];
+        });
+    
+        return ['data_laporan' => $laporanTransformed];
+    }
+>>>>>>> 7acb1dbd223f8944660abcb32e3b4968cdc37ea3
 
    /**
     * Show the form for creating a new resource.
