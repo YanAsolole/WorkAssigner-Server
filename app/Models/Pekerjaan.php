@@ -14,7 +14,7 @@ class Pekerjaan extends Model
 
    public function project()
    {
-      return $this->belongsTo(Project::class, 'id_proyeks', 'id');
+      return $this->belongsTo(Proyek::class, 'id_proyeks', 'id');
    }
    public function user()
    {
