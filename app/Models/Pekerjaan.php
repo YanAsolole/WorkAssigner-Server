@@ -11,13 +11,4 @@ class Pekerjaan extends Model
 
    protected $table = "pekerjaans";
    protected $guarded = ['id'];
-
-   public function project()
-   {
-      return $this->belongsTo(Proyek::class, 'id_proyeks', 'id');
-   }
-   public function user()
-   {
-      return $this->belongsTo(User::class, 'id_user', 'id');
-   }
 }
